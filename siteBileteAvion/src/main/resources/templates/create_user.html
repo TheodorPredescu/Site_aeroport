@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Passengers List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/002/157/018/non_2x/honeymoon-travel-destination-airplane-drawing-heart-sign-vector.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            padding: 8px;
+            font-size: small;
+            color: #99001d;
+            font-weight: bold;
+        }
+        input {
+            padding : 2px;
+            margin: 5px;
+            width: 225px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        .centered-div {
+            background-color: #bfbfbf;
+            padding: 20px; /* Internal padding for the box */
+            margin: 20px;  /* Creates space around the element */
+            border: 1px solid black;
+            width: 400px;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="centered-div">
+<h1 style="font-size: 25px;">Create User</h1>
+<hr>
+<form action="/create-user" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" th:value="${firstName}" required><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" th:value="${lastName}" required><br>
+
+    <div th:if="${validn == false}">
+        <p style="font-size: 0.8em; color: red"> Invalid first-name/last-name: names must start with a letter and have a length of at least 3.
+        </p>
+    </div>
+
+    <label for="email">Email:</label>
+    <input id="email" name="email" th:value="${email}" required><br>
+
+    <div th:if="${valide == false}">
+        <p style="font-size: 0.8em; color: red"> Invalid email address: emails must have in local part (before @) only letters and underscore "_" or dot ".", and start with a letter.
+        </p>
+    </div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:value="${password}" required><br>
+
+    <div th:if="${validp == false}">
+        <p style="font-size: 0.8em; color: red">Invalid password: the password mush have at least one upper character, one lower, one special "@&*%`~!" and have a length of at least 5.
+        </p>
+    </div>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" th:value="${confirmPassword}" required>
+    <br>
+    <a>Password must have at least one upper character, lower character, and special character: @&*%`~!</a>
+    <br>
+    <div th:if="${validpd == false}">
+        <p style="font-size: 0.8em; color: red">Invalid confirmation of password: the confirmation of the password does not match the initial password.
+        </p>
+    </div>
+    <label for="CNP">CNP:</label>
+    <input type="text" id="CNP" name="CNP" th:value="${CNP}" required><br>
+
+    <div th:if="${validcnp == false}">
+        <p style="font-size: 0.8em; color: red">Invalid CNP: a cnp has 13 numbers in it.
+        </p>
+    </div>
+
+    <label for="nationality">Nationality:</label>
+    <input type="text" id="nationality" name="nationality" th:value="${nationality}" required><br>
+
+    <label for="passportNumber">Passport Number:</label>
+    <input type="text" id="passportNumber" name="passportNumber" th:value="${passportNumber}" required><br>
+
+    <button type="submit" th:if="${showsubmit == true}" style="width: 100%;margin-top: 15px;margin-bottom: 8px;">Submit</button>
+</form>
+
+<button onclick="window.location.href='/home';" style="width: inherit;">Back</button>
+<div th:if="succesMessage" style="display: grid;grid-template-rows: auto auto;">
+    <span th:text="${succesMessage}" style="color: #025302;font-weight: bold;margin: auto;margin-top: auto;margin-bottom: auto;margin-top: 10px;margin-bottom: 10px;"></span>
+    <button th:if="${valid_add}" onclick="window.location.href='/login/user';">Access account</button>
+</div>
+    <div th:if="errorMessage" style="display: grid;grid-template-rows: auto;">
+        <span th:text="${errorMessage}" style="color: red;font-weight: bold;margin: auto;margin-top: auto;margin-bottom: auto;margin-top: 10px;margin-bottom: 10px;"></span>
+    </div>
+</div>
+</body>
+</html>

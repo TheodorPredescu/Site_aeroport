@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aeroport-Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #87CEEB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input {
+            margin: 8px 0;
+            padding: 8px;
+            width: 90%; /* Adjust width for better styling */
+        }
+        .container {
+            background-color: #F0F8FF; /* Light blue for the div */
+            border: 2px solid #4682B4; /* Steel blue border */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for a nicer look */
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #4682B4;
+            font-weight: bold;
+            padding: 4px 8px;
+            border: 2px solid #4682B4;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #4682B4;
+            color: white;
+        }
+        .verify-button {
+            display: block;
+            width: 95%;
+            margin: 8px 10px;
+            padding: 12px 0; /* Bigger button */
+            background-color: #4682B4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 19px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .verify-button:hover {
+            background-color: #5A9BD5;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Autentification</h1>
+    <form action="/login-verification" method="post">
+        <label for="email_ver">Email:</label>
+        <input id="email_ver" name="email_ver" required>
+        <br>
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" required>
+        <br>
+        <button type="submit" class="verify-button">Login</button>
+    </form>
+    <div th:if="${validation == false}">
+        <p class="error-message">Email/Password incorrect!</p>
+    </div>
+    <a href="/home" class="back-button">Back</a>
+</div>
+</body>
+</html>
