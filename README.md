@@ -31,6 +31,7 @@ The home page contains two main options:
 
   
 ![Alt Text](pictures/home-page.png)
+<br>
 
 
 ## 🔑 Authentication  
@@ -48,6 +49,7 @@ It includes:
 
 
 ![Alt Text](pictures/login.png)
+<br>
 
 
 ## 🆕 Create User  
@@ -69,7 +71,7 @@ The user registration page includes the following fields with validation rules:
 
 
 ![Alt Text](pictures/create-user-unchecked.png)
-
+<br>
 
 
 ## 📋 Menu Page  
